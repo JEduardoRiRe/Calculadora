@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>Calculadora</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<script src="jquery-3.4.1.min.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</head>
+<body>
+	<style type="text/css">
+		.Boton{
+			height: 70px;
+			background-color: #343a40;
+			color: #20c997;
+			font-size: 40px;
+			text-align: center;
+			color: cyan;
+		}
+		.B1,.B2,.B3,.B4,.C4,.D4,.E4,.F3{
+			background-color: gray;
+			color: black;
+		}
+		.container{
+			margin-top: 15px;
+			width:1000px;
+		}
+	</style>
+
+<div class="container">
+	<div class="row">
+		<div class="col-12 Boton border" id="disp"></div>
+	</div>
+
+	<div class="row">
+		<button class="col-3 Boton B1 border" id="B1">AC</button>
+		<button class="col-3 Boton B2 border" id="B2"></button>
+		<button class="col-3 Boton B3 border" id="B3"></button>
+		<button class="col-3 Boton B4 border" id="B4">÷</button>
+	</div>
+
+	<div class="row">
+		<button class="col-3 Boton border" id="C1">7</button>
+		<button class="col-3 Boton border" id="C2">8</button>
+		<button class="col-3 Boton border" id="C3">9</button>
+		<button class="col-3 Boton C4 border" id="C4">x</button>
+	</div>
+
+	<div class="row">
+		<button class="col-3 Boton border" id="D1">4</button>
+		<button class="col-3 Boton border" id="D2">5</button>
+		<button class="col-3 Boton border" id="D3">6</button>
+		<button class="col-3 Boton D4 border" id="D4">-</button>
+	</div>
+
+	<div class="row">
+		<button class="col-3 Boton border" id="E1">1</button>
+		<button class="col-3 Boton border" id="E2">2</button>
+		<button class="col-3 Boton border" id="E3">3</button>
+		<button class="col-3 Boton E4 border" id="E4">+</button>
+	</div>
+
+	<div class="row">
+		<button class="col-6 Boton border" id="F1">0</button>
+		<button class="col-3 Boton border" id="F2"></button>
+		<button class="col-3 Boton F3 border" id="F3">=</button>
+	</div>	
+</div>
+</body>
+</html>
+<script>
+		$(document).ready(function(){
+			var Numero_1;
+            var Numero_2;
+            var Operacion;	
+
+            function init(){
+  
+  var disp = document.getElementById('disp');
+  var Reinicio = document.getElementById('B1');
+  var Operacion_Suma = document.getElementById('E4');
+  var Operacion_Resta = document.getElementById('D4');
+  var Operacion_Multiplicacion = document.getElementById('C4');
+  var Operacion_Division = document.getElementById('B4');
+  var Igual = document.getElementById('F3');
+  var Numero_Uno = document.getElementById('E1');
+  var Numero_Dos = document.getElementById('E2');
+  var Numero_Tres = document.getElementById('E3');
+  var Numero_Cuatro = document.getElementById('D1');
+  var Numero_Cinco = document.getElementById('D2');
+  var Numero_Seis = document.getElementById('D3');
+  var Numero_Siete = document.getElementById('E1');
+  var Numero_Ocho = document.getElementById('E2');
+  var Numero_Nueve = document.getElementById('E3');
+  var Numero_Cero = document.getElementById('F1');
+}
+
+
+  E1.onclick = function(e){
+      disp.textContent = disp.textContent  + "1";
+  }
+  E2.onclick = function(e){
+      disp.textContent = disp.textContent  + "2";
+  }
+  E3.onclick = function(e){
+      disp.textContent = disp.textContent  + "3";
+  }
+  D1.onclick = function(e){
+      disp.textContent = disp.textContent  + "4";
+  }
+  D2.onclick = function(e){
+      disp.textContent = disp.textContent  + "5";
+  }
+  D3.onclick = function(e){
+      disp.textContent = disp.textContent  + "6";
+  }
+  C1.onclick = function(e){
+     disp.textContent = disp.textContent  + "7";
+  }
+  C2.onclick = function(e){
+      disp.textContent = disp.textContent  + "8";
+  }
+  C3.onclick = function(e){
+      disp.textContent = disp.textContent  + "9";
+  }
+  F1.onclick = function(e){
+      disp.textContent = disp.textContent  + "0";
+  }
+  B1.onclick = function(e){
+      Reiniciar();
+  }
+  E4.onclick = function(e){
+      Numero_1 = disp.textContent;
+      Operacion = "+";
+      Limpiar();
+  }
+  D4.onclick = function(e){
+      Numero_1 = disp.textContent;
+      Operacion = "-";
+      Limpiar();
+  }
+  C4.onclick = function(e){
+      Numero_1 = disp.textContent;
+      Operacion = "*";
+      Limpiar();
+  }
+  B4.onclick = function(e){
+      Numero_1 = disp.textContent;
+      Operacion = "/";
+      Limpiar();
+  }
+  F3.onclick = function(e){
+      Numero_2 = disp.textContent;
+      Resolver();
+  }
+
+  function Limpiar(){
+  disp.textContent = "";
+}
+function Reiniciar(){
+  disp.textContent = "";
+  Numero_1m = 0;
+  Numero_2 = 0;
+  Operacion = "";
+}
+
+
+function Resolver(){
+  var Resultado_Operacion = 0;
+  switch(Operacion){
+    case "+":
+      Resultado_Operacion = parseFloat(Numero_1) + parseFloat(Numero_2);
+      break;
+    case "-":
+        Resultado_Operacion = parseFloat(Numero_1) - parseFloat(Numero_2);
+        break;
+    case "*":
+      Resultado_Operacion = parseFloat(Numero_1) * parseFloat(Numero_2);
+      break;
+    case "/":
+      Resultado_Operacion = parseFloat(Numero_1) / parseFloat(Numero_2);
+      break;
+  }
+  Reiniciar();
+  disp.textContent = Resultado_Operacion;
+}
+
+		})
+</script>
